@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 31, 2020 11:45:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ogani.entity.Users" table="Users" schema="dbo" catalog="WebOgani" optimistic-lock="version">
+        <id name="userId" type="int">
+            <column name="UserId" />
+            <generator class="identity" />
+        </id>
+        <property name="userName" type="string">
+            <column name="UserName" not-null="true" />
+        </property>
+        <property name="passWords" type="string">
+            <column name="PassWords" not-null="true" />
+        </property>
+        <property name="userEmail" type="string">
+            <column name="UserEmail" not-null="true" />
+        </property>
+        <property name="userStatus" type="boolean">
+            <column name="UserStatus" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" not-null="true" />
+        </property>
+        <property name="userAddress" type="string">
+            <column name="UserAddress" not-null="true" />
+        </property>
+        <property name="userImage" type="string">
+            <column name="UserImage" not-null="true" />
+        </property>
+        <property name="isAdmin" type="boolean">
+            <column name="IsAdmin" not-null="true" />
+        </property>
+        <set name="comments" table="Comment" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="UserId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.Comment" />
+        </set>
+        <set name="orderses" table="Orders" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="UserId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.Orders" />
+        </set>
+        <set name="stars" table="Star" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="UserId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.Star" />
+        </set>
+    </class>
+</hibernate-mapping>

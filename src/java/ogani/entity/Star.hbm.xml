@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 31, 2020 11:45:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ogani.entity.Star" table="Star" schema="dbo" catalog="WebOgani" optimistic-lock="version">
+        <composite-id name="id" class="ogani.entity.StarId">
+            <key-property name="prodId" type="int">
+                <column name="ProdId" />
+            </key-property>
+            <key-property name="userId" type="int">
+                <column name="UserId" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="product" class="ogani.entity.Product" update="false" lazy="false" insert="false" fetch="select">
+            <column name="ProdId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="users" class="ogani.entity.Users" update="false" lazy="false" insert="false" fetch="select">
+            <column name="UserId" not-null="true" />
+        </many-to-one>
+        <property name="mark" type="int">
+            <column name="Mark" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

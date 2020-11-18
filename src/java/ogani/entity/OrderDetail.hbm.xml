@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 31, 2020 11:45:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ogani.entity.OrderDetail" table="OrderDetail" schema="dbo" catalog="WebOgani" optimistic-lock="version">
+        <composite-id name="id" class="ogani.entity.OrderDetailId">
+            <key-property name="orderId" type="int">
+                <column name="OrderId" />
+            </key-property>
+            <key-property name="prodId" type="int">
+                <column name="ProdId" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="orders" class="ogani.entity.Orders" lazy="false" update="false" insert="false" fetch="select">
+            <column name="OrderId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="product" class="ogani.entity.Product" lazy="false" update="false" insert="false" fetch="select">
+            <column name="ProdId" not-null="true" />
+        </many-to-one>
+        <property name="quantity" type="int">
+            <column name="Quantity" not-null="true" />
+        </property>
+        <property name="amount" type="double">
+            <column name="Amount" precision="53" scale="0" not-null="true" />
+        </property>
+        <property name="discount" type="double">
+            <column name="Discount" precision="53" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

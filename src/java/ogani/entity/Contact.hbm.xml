@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 31, 2020 11:45:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ogani.entity.Contact" table="Contact" schema="dbo" catalog="WebOgani" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="email" type="string">
+            <column name="Email" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" not-null="true" />
+        </property>
+        <property name="contactAddress" type="string">
+            <column name="ContactAddress" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

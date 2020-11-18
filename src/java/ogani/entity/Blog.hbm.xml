@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 31, 2020 11:45:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ogani.entity.Blog" table="Blog" schema="dbo" catalog="WebOgani" optimistic-lock="version">
+        <id name="blogId" type="int">
+            <column name="BlogId" />
+            <generator class="identity" />
+        </id>
+        <property name="blogName" type="string">
+            <column name="BlogName" not-null="true" />
+        </property>
+        <property name="content" type="string">
+            <column name="Content" not-null="true" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="blogStatus" type="boolean">
+            <column name="BlogStatus" not-null="true" />
+        </property>
+        <property name="imageLink" type="string">
+            <column name="imageLink" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

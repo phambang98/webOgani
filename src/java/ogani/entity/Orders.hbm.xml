@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 31, 2020 11:45:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ogani.entity.Orders" table="Orders" schema="dbo" catalog="WebOgani" optimistic-lock="version">
+        <id name="orderId" type="int">
+            <column name="OrderId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="users" class="ogani.entity.Users" lazy="false" fetch="select">
+            <column name="UserId" not-null="true" />
+        </many-to-one>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="totalAmount" type="double">
+            <column name="TotalAmount" precision="53" scale="0" not-null="true" />
+        </property>
+        <property name="orderStatus" type="string">
+            <column name="OrderStatus" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" not-null="true" />
+        </property>
+        <property name="orderAddress" type="string">
+            <column name="OrderAddress" not-null="true" />
+        </property>
+        <set name="orderDetails" table="OrderDetail" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="OrderId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.OrderDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 31, 2020 11:45:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ogani.entity.Categories" table="Categories" schema="dbo" catalog="WebOgani" optimistic-lock="version">
+        <id name="cateId" type="int">
+            <column name="CateId" />
+            <generator class="identity" />
+        </id>
+        <property name="cateName" type="string">
+            <column name="CateName" not-null="true" />
+        </property>
+        <property name="cateTitle" type="string">
+            <column name="CateTitle" not-null="true" />
+        </property>
+        <property name="prioritys" type="int">
+            <column name="Prioritys" not-null="true" />
+        </property>
+        <property name="cateStatus" type="boolean">
+            <column name="CateStatus" not-null="true" />
+        </property>
+        <set name="products" table="Product" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="CateId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.Product" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 31, 2020 11:45:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ogani.entity.Product" table="Product" schema="dbo" catalog="WebOgani" optimistic-lock="version">
+        <id name="prodId" type="int">
+            <column name="ProdId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categories" class="ogani.entity.Categories" lazy="false" fetch="select">
+            <column name="CateId" not-null="true" />
+        </many-to-one>
+        <property name="prodName" type="string">
+            <column name="ProdName" not-null="true" />
+        </property>
+        <property name="price" type="double">
+            <column name="Price" precision="53" scale="0" not-null="true" />
+        </property>
+        <property name="title" type="string">
+            <column name="Title" not-null="true" />
+        </property>
+        <property name="descriptions" type="string">
+            <column name="Descriptions" not-null="true" />
+        </property>
+        <property name="imageLink" type="string">
+            <column name="ImageLink" />
+        </property>
+        <property name="created" type="timestamp">
+            <column name="Created" length="23" not-null="true" />
+        </property>
+        <property name="discount" type="double">
+            <column name="Discount" precision="53" scale="0" not-null="true" />
+        </property>
+        <property name="prodStatus" type="boolean">
+            <column name="ProdStatus" not-null="true" />
+        </property>
+        <set name="imageProducts" table="ImageProduct" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ProdId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.ImageProduct" />
+        </set>
+        <set name="orderDetails" table="OrderDetail" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ProdId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.OrderDetail" />
+        </set>
+        <set name="comments" table="Comment" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ProdId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.Comment" />
+        </set>
+        <set name="stars" table="Star" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="ProdId" not-null="true" />
+            </key>
+            <one-to-many class="ogani.entity.Star" />
+        </set>
+    </class>
+</hibernate-mapping>
