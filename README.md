@@ -8,4 +8,4 @@ Bước 5:Thưởng Thức</br>
 <h3>Người Dùng:</h3>http://localhost:8080/Ogani/home/index.htm hoặc http://localhost/Ogani/home/index.htm</br>
 <h3>Admin:</h3>http://localhost:8080/Ogani/adminController/initLogin.htm hoặc http://localhost/Ogani/adminController/initLogin.htm</br>
 
-Lưu ý: Có một số thư viện ngoài. bạn sẽ thấy màu đỏ thông báo. lên google hoặc java2s.com tải về nhé
+<h3>Lưu ý:</h3> Có một số thư viện ngoài. bạn sẽ thấy màu đỏ thông báo. lên google hoặc java2s.com tải về nhé
